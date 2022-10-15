@@ -16,16 +16,16 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   final _auth=FirebaseAuth.instance;
-  final emailcontroller=TextEditingController();
-  final passwordcontroller=TextEditingController();
-  // late String email;
-  // late String password;
+  // final emailcontroller=TextEditingController();
+  // final passwordcontroller=TextEditingController();
+  late String email;
+  late String password;
   @override
-  void dispose(){
-    emailcontroller.dispose();
-    passwordcontroller.dispose();
-    super.dispose();
-  }
+  // void dispose(){
+  //   emailcontroller.dispose();
+  //   passwordcontroller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +52,15 @@ class _BodyState extends State<Body> {
             width: 350,
 
             child: TextField(
-              controller: emailcontroller,
 
-              // onChanged: (value){
-              //   email=value;
-              // },
+              // controller: emailcontroller,
+
+              onChanged: (value){
+                email=value;
+              },
 
               style: const TextStyle(
+
                 color: Colors.black45,
               ),
 
@@ -95,7 +97,10 @@ class _BodyState extends State<Body> {
             child: TextField(
 
 
-              controller: passwordcontroller,
+              //
+              onChanged: (value){
+                password=value;
+              },
 
               style: const TextStyle(
                 color: Colors.black45,
@@ -138,7 +143,7 @@ class _BodyState extends State<Body> {
               child: MaterialButton(
                 onPressed: () async {
                   try{
-                    final user= await _auth.signInWithEmailAndPassword(email: emailcontroller.text.trim(), password: passwordcontroller.text.trim());
+                    final user= await _auth.signInWithEmailAndPassword(email: email, password: password);
                     if(user!=null){
                       Navigator.push(context, MaterialPageRoute(builder:(context)=> const Mainpage()));
                     }
@@ -147,7 +152,9 @@ class _BodyState extends State<Body> {
                     print(e);
                   }
 
+
                 },
+
                 minWidth: 200.0,
                 height: 42.0,
                 child: const Text(
