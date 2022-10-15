@@ -20,6 +20,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Background(
 
       child: Column(
@@ -33,15 +34,15 @@ class _BodyState extends State<Body> {
           //   ),
           // ),
           Image.asset('assets/images/43122.jpg',
-            width: 310,
-            height: 280,
+            width: size.width*0.88,
+            height: size.height*0.3,
 
           ),
           const SizedBox(
             height: 30.00,
           ),
           SizedBox(
-            width: 350,
+            width: 300,
 
             child: TextField(
 
@@ -81,7 +82,7 @@ class _BodyState extends State<Body> {
             height: 10.0,
           ),
           SizedBox(
-            width: 350,
+            width: 300,
 
             child: TextField(
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:loginsignuppage/Screens/Utils.dart';
 import 'package:loginsignuppage/Screens/Welcome/welcome_Screen.dart';
 import 'package:loginsignuppage/constants.dart';
+import 'Screens/Splash screen/splash_screens.dart';
 
 
 import 'Screens/Utils.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
 
       ),
-      home: WelcomeScreen(),
+      home: Splashscreen(),
     );
   }
 }

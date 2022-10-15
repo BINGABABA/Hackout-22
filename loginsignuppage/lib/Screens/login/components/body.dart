@@ -15,20 +15,22 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+
   final _auth=FirebaseAuth.instance;
-  // final emailcontroller=TextEditingController();
-  // final passwordcontroller=TextEditingController();
-  late String email;
-  late String password;
+  final emailcontroller=TextEditingController();
+  final passwordcontroller=TextEditingController();
+  // late String email;
+  // late String password;
   @override
-  // void dispose(){
-  //   emailcontroller.dispose();
-  //   passwordcontroller.dispose();
-  //   super.dispose();
-  // }
+  void dispose(){
+    emailcontroller.dispose();
+    passwordcontroller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Background(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,23 +43,23 @@ class _BodyState extends State<Body> {
           //   ),
           // ),
           Image.asset('assets/images/43122.jpg',
-            width: 310,
-            height: 280,
+            width: size.width*0.88,
+            height: size.height*0.3,
 
           ),
           const SizedBox(
-            height: 30.00,
+            height: 15.00,
           ),
           SizedBox(
-            width: 350,
+            width: 300,
 
             child: TextField(
 
-              // controller: emailcontroller,
+              controller: emailcontroller,
 
-              onChanged: (value){
-                email=value;
-              },
+              // onChanged:(value){
+              //   email=value;
+              // },
 
               style: const TextStyle(
 
@@ -92,15 +94,15 @@ class _BodyState extends State<Body> {
             height: 10.0,
           ),
           SizedBox(
-            width: 350,
+            width: 300,
 
             child: TextField(
 
-
+controller: passwordcontroller,
               //
-              onChanged: (value){
-                password=value;
-              },
+              // onChanged: (value){
+              //   password=value;
+              // },
 
               style: const TextStyle(
                 color: Colors.black45,
@@ -143,7 +145,7 @@ class _BodyState extends State<Body> {
               child: MaterialButton(
                 onPressed: () async {
                   try{
-                    final user= await _auth.signInWithEmailAndPassword(email: email, password: password);
+                    final user= await _auth.signInWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text);
                     if(user!=null){
                       Navigator.push(context, MaterialPageRoute(builder:(context)=> const Mainpage()));
                     }

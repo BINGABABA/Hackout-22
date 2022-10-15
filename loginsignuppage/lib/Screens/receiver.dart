@@ -97,6 +97,6 @@ class User {
       A: json['Book Name'],
       B: json['Category'],
       C: json['Name'],
-      D: json['Conatct Details'],
+      D: json['Contact Details'],
       E: json['Address']);
 }

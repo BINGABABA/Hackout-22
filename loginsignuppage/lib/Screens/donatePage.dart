@@ -27,6 +27,7 @@ class _DonatePageState extends State<DonatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.purple[200],
         leading:
         IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
         title: Text('Donate now'),
