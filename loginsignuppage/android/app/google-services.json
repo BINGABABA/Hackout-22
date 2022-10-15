@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "660122109957",
+    "project_id": "handout-2d21e",
+    "storage_bucket": "handout-2d21e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660122109957:android:79b2681381f6fc91f3746c",
+        "android_client_info": {
+          "package_name": "com.example.loginsignuppage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660122109957-k05v865ihu8e96bouihi16la10j26qt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpc0faSnYsbDvAO5BuENpEl2sUaqTL3v8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660122109957-k05v865ihu8e96bouihi16la10j26qt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
