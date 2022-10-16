@@ -50,8 +50,7 @@ class _DonatePageState extends State<DonatePage> {
           IconButton(
               onPressed: () {
                 createUser(a: bookName, c: name, d: contact, e: address);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BookPage()));
+                Navigator.pop(context);
                 // Navigator.pop(context);
               },
               icon: Icon(Icons.check))

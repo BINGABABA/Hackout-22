@@ -11,6 +11,7 @@ class Mainpage extends StatelessWidget {
 
       home: Scaffold(
         backgroundColor: Colors.white,
+
         body: Welcome_sc(),
 
       ),

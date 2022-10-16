@@ -13,6 +13,7 @@ class Receiver extends StatelessWidget {
 
       appBar: AppBar(
         backgroundColor: Color(0xff9370DB),
+        leading: IconButton(onPressed: (){Navigator.pop(context);},icon: Icon(Icons.arrow_back_ios_new),),
         title: Text(tileName,
         style: GoogleFonts.merriweather(
 fontWeight: FontWeight.w200,
