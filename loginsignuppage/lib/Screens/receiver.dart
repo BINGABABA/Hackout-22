@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'constants.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:loginsignuppage/Screens/constants.dart';
 
-class Receiver extends StatefulWidget {
-  const Receiver({Key? key}) : super(key: key);
-  @override
-  State<Receiver> createState() => _ReceiverState();
-}
+class Receiver extends StatelessWidget {
+  Receiver({required this.tileName});
+  String tileName = '';
 
-class _ReceiverState extends State<Receiver> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
-        title: Text('Get em here'),
+        backgroundColor: Color(0xff9370DB),
+        title: Text(tileName,
+        style: GoogleFonts.merriweather(
+fontWeight: FontWeight.w200,
+
+        ),),
         centerTitle: true,
       ),
       body: Stack(
         children: [
-          Positioned(
+          Container(
             child: StreamBuilder<List<User>>(
-              stream: readUsers(),
+              stream: readUsers(name: tileName),
               builder: ((context, snapshot) {
                 if (snapshot.hasError) {
                   return Text(
@@ -41,61 +45,86 @@ class _ReceiverState extends State<Receiver> {
         ],
       ),
     );
+    ;
   }
-
-  Widget buildUser(User user) => GestureDetector(
-        child: Container(
-          height: 100,
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              color: white,
-              boxShadow: shadow,
-              borderRadius: BorderRadius.circular(30)),
-          margin: EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(user.A),
-              Text(user.B),
-              Text(user.C),
-              Text(user.D),
-              Text(user.E),
-            ],
-          ),
-        ),
-        onTap: () {},
-      );
-  Stream<List<User>> readUsers() => FirebaseFirestore.instance
-      .collection('donated')
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
 }
+
+Widget buildUser(User user) => GestureDetector(
+  child: Container(
+    padding: EdgeInsets.all(10),
+    decoration: BoxDecoration(
+        color: white,
+        boxShadow: shadow,
+        borderRadius: BorderRadius.circular(20)),
+    margin: EdgeInsets.all(20),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Row(children: [Icon(Icons.menu_book_outlined),
+          Text("  "+user.A,
+              style: st)],),SizedBox(height: 5),
+        Row(children: [Icon(Icons.person),
+          Center(
+            child: Text("  "+user.C,
+                style: st),),],),SizedBox(height: 5,
+        ),
+        Row(children: [Icon(Icons.call),
+          Center(
+            child: Text("  "+user.D,
+                style: st)),],),SizedBox(height: 5,
+        ),
+        Column(
+
+          children: [
+            Row(children: [
+              Icon(Icons.location_on),
+              Wrap(
+                // height: 40,
+
+                children: [
+                  Text("  "+user.E,
+                      style: st)
+                ],
+              ),
+        ]),
+
+
+      ]
+),
+
+
+
+      ],
+    ),
+  ),
+  onTap: () {},
+);
+Stream<List<User>> readUsers({required String name}) =>
+    FirebaseFirestore.instance.collection(name).snapshots().map((snapshot) =>
+        snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
 
 class User {
   late String id;
-  final String A, B, C, D, E;
+  final String A, C, D, E;
   User(
       {this.id = '',
-      required this.A,
-      required this.B,
-      required this.C,
-      required this.D,
-      required this.E});
+        required this.A,
+        // required this.B,
+        required this.C,
+        required this.D,
+        required this.E});
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'Book Name': A,
-        'Category': B,
-        'Name': C,
-        'Contact Details': D,
-        'Address': E,
-      };
+    'id': id,
+    'Book Name': A,
+    'Name': C,
+    'Contact Details': D,
+    'Address': E,
+  };
   static User fromJson(Map<String, dynamic> json) => User(
       id: json['id'],
       A: json['Book Name'],
-      B: json['Category'],
       C: json['Name'],
       D: json['Contact Details'],
       E: json['Address']);

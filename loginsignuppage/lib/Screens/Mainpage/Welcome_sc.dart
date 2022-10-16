@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loginsignuppage/Screens/books.dart';
 import 'package:loginsignuppage/Screens/donatePage.dart';
-import 'package:loginsignuppage/Screens/receiver.dart';
+import 'package:loginsignuppage/Screens/books.dart';
 
 
 class Welcome_sc extends StatelessWidget {
@@ -94,7 +95,7 @@ class Welcome_sc extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                   child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Receiver()),);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage()));
                     },
                     minWidth: 250,
                     height: 45.0,

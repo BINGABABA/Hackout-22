@@ -5,12 +5,18 @@ import 'package:loginsignuppage/Screens/Welcome/components/background.dart';
 import 'package:loginsignuppage/constants.dart';
 import 'package:loginsignuppage/Components/Rounded_button.dart';
 import 'package:loginsignuppage/Screens/login/login_screen.dart';
+import 'package:loginsignuppage/Screens/login/components/body.dart';
+import 'package:loginsignuppage/Screens/Mainpage/main_page.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Widget push=Icon(Icons.abc);
+    // if(f()){
+    //   push=Mainpage();
+    // }
     Size size = MediaQuery.of(context).size;
     //total height and width of screen
     return Background(
@@ -37,7 +43,7 @@ class Body extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
             child: MaterialButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginScreen()),
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()),
                 );
               },
               minWidth: 300,

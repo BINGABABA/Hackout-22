@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loginsignuppage/Screens/Sign up/background.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:loginsignuppage/Screens/Mainpage/main_page.dart';
+import 'package:loginsignuppage/Screens/Sign%20up/or_divider.dart';
+// import 'package:path_provider/provider.dart';
+import 'package:loginsignuppage/Screens/Sign%20up/socialicon.dart';
 
-import 'package:loginsignuppage/Screens/Utils.dart';
+import 'package:loginsignuppage/constants.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -26,14 +30,12 @@ class _BodyState extends State<Body> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // const Text(
-          //   'LOGIN',
-          //   style: TextStyle(
-          //     fontWeight: FontWeight.bold,
-          //     fontSize: 80.0,
-          //   ),
-          // ),
-          Image.asset('assets/images/43122.jpg',
+          Text('SIGNUP',style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16.5
+          ),),
+
+          Image.asset('assets/images/43122.png',
             width: size.width*0.88,
             height: size.height*0.3,
 
@@ -142,6 +144,11 @@ class _BodyState extends State<Body> {
                   }
                   catch(e){
                     print(e);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(e.toString()),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
                     // Utils.showSnacker(e.messege);
 
                   }
@@ -164,11 +171,34 @@ class _BodyState extends State<Body> {
               ),
             ),
           ),
-
+          OrDivider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              socialicon(
+                iconSrc: "assets/icons/facebook.svg",
+                press: (){},
+              ),
+              socialicon(
+                iconSrc: "assets/icons/twitter.svg",
+                press: (){},
+              ),
+              socialicon(
+                iconSrc: "assets/icons/google-plus.svg",
+                press: (){
+                  // final provider =Provider.of<GoogleSignInProvider>(context,listen:false);
+                  // provider.googleLogin();
+                },
+              ),
+          ],
+          )
         ],
       ),
     );
   }
 }
+
+
+
 
 
